@@ -29,5 +29,15 @@ namespace Labo.API.Controllers
                 return Problem("L'email n'a pas pu être envoyé");
             }
         }
+
+        [HttpHead]
+        public IActionResult Head([FromQuery]string email)
+        {
+            if(memberService.ExistsEmail(email))
+            {
+                return Ok();
+            }
+            return NotFound();
+        }
     }
 }
